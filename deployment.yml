@@ -18,3 +18,5 @@ spec:
     containers: 
     - name: test-container 
       image: souhaibhsoumi/frontendproject:1.2
+    ports:
+        - containerPort: 80
