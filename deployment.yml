@@ -18,7 +18,7 @@ spec:
           image: jacino/devops:frontend01
           env:
            - name: BACKEND_HOST
-             value: BackEndService
+             value: back-end-service
            - name: BACKEND_PORT
              value: "32100"
       imagePullSecrets:
