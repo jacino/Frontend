@@ -1,22 +1,22 @@
-apiVersion: apps/v1 
-kind: Deployment 
-metadata: 
- name: test-deployment 
-spec: 
- replicas: 2
- strategy: 
-  type: RollingUpdate 
- selector: 
-  matchLabels: 
-   app: Pfe-test-front 
- template: 
-   metadata: 
-    labels: 
-     app: Pfe-test-front
-     env: prod 
-   spec: 
-    containers: 
-    - name: test-container 
-      image: souhaibhsoumi/frontendproject:1.2
-    ports:
-        - containerPort: 80
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployments-front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: Pfe-front-end
+  template:
+    metadata:
+      labels:
+        app: Pfe-front-end
+        env: prod
+    spec:
+      containers:
+        - name: frontend01  # Use a valid lowercase name
+          image: jacino/devops:frontend01
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: github-container-registry  # Specify the name of your image pull secret here
