@@ -34,6 +34,6 @@ jobs:
 
     - name: Build and Push Docker image
       run: |
-        docker build -t jacino/devops:frontend_01 .
-        docker push jacino/devops:frontend_01
+        docker build -t jacino/devops:frontend01 .
+        docker push jacino/devops:frontend01
         
