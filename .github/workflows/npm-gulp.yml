@@ -37,3 +37,23 @@ jobs:
         docker build -t jacino/devops:frontend01 .
         docker push jacino/devops:frontend01
         
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Verify K8s Service Account
+      uses: azure/setup-kubectl@v3
+    - name: Create/Verify `.kube` directory
+      run: mkdir -p ~/.kube/
+    - name: Create kubectl config
+      run: |
+          cat << EOF >> ~/.kube/kubeconfig.yaml
+          ${{ secrets.KUBECONFIG_SA }}
+          EOF
+    - name: Deploy to Kubernetes
+      run: |
+          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl delete pods -l app=Pfe-front-end -n apps --ignore-not-found=true
+          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl apply -f deployment.yml
+          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl apply -f service.yml
