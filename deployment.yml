@@ -16,7 +16,10 @@ spec:
       containers:
         - name: frontend01  # Use a valid lowercase name
           image: jacino/devops:frontend01
-          ports:
-            - containerPort: 80
+          env:
+           - name: BACKEND_HOST
+             value: BackEndService
+           - name: BACKEND_PORT
+             value: "32100"
       imagePullSecrets:
         - name: github-container-registry  # Specify the name of your image pull secret here
