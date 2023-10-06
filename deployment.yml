@@ -16,6 +16,7 @@ spec:
       containers:
         - name: frontend01  # Use a valid lowercase name
           image: jacino/devops:frontend01
+          imagePullPolicy: Always
           env:
            - name: BACKEND_HOST
              value: back-end-service
