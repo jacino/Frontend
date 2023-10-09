@@ -10,6 +10,3 @@ spec:
     - name: test
       protocol: TCP
       port: 80
-      targetPort: 80
-      nodePort: 32200  # Specify the NodePort here
-  type: NodePort  # Change the service type to NodePort
