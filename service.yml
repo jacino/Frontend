@@ -8,8 +8,8 @@ spec:
     tier: frontend
     env: prod
   ports:
-   - name: test
+    - name: test
       protocol: "TCP"
       port: 80
       targetPort: 80
-   type: LoadBalancer
+  type: LoadBalancer
