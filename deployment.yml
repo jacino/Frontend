@@ -7,20 +7,23 @@ spec:
   selector:
     matchLabels:
       app: Pfe-front-end
+      tier: frontend
+      track: stable
   template:
     metadata:
       labels:
         app: Pfe-front-end
+        tier: frontend
+        track: stable
         env: prod
     spec:
       containers:
         - name: frontend01  # Use a valid lowercase name
           image: jacino/devops:frontend01
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/usr/sbin/nginx","-s","quit"]
           imagePullPolicy: Always
-          env:
-           - name: BACKEND_HOST
-             value: back-end-service
-           - name: BACKEND_PORT
-             value: "32100"
       imagePullSecrets:
         - name: github-container-registry  # Specify the name of your image pull secret here
