@@ -5,8 +5,11 @@ metadata:
 spec:
   selector:
     app: Pfe-front-end
+    tier: frontend
     env: prod
   ports:
-    - name: test
-      protocol: TCP
+   - name: test
+      protocol: "TCP"
       port: 80
+      targetPort: 80
+   type: LoadBalancer
