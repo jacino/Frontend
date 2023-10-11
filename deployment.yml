@@ -18,12 +18,14 @@ spec:
         env: prod
     spec:
       containers:
-        - name: frontend01  # Use a valid lowercase name
+        - name: frontend01 # Use a valid lowercase name
           image: jacino/devops:frontend01
+          ports:
+            - containerPort: 80
           lifecycle:
             preStop:
               exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+                command: ["/usr/sbin/nginx", "-s", "quit"]
           imagePullPolicy: Always
       imagePullSecrets:
-        - name: github-container-registry  # Specify the name of your image pull secret here
+        - name: github-container-registry # Specify the name of your image pull secret here
