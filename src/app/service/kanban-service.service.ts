@@ -15,11 +15,11 @@ export class KanbanService {
   constructor(private http: HttpClient) { }
 
   retrieveAllKanbanBoards(): Observable<Kanban[]> {
-    return this.http.get<Kanban[]>(this.kanbanAppUrl + '/api' + '/kanbans/');
+    return this.http.get<Kanban[]>(this.kanbanAppUrl + '/kanbans/');
   }
 
   retrieveKanbanById(id: String): Observable<Kanban> {
-    return this.http.get<Kanban>(this.kanbanAppUrl + '/api' + '/kanbans/' + id);
+    return this.http.get<Kanban>(this.kanbanAppUrl + '/kanbans/' + id);
   }
 
   saveNewKanban(title: string): Observable<string> {
