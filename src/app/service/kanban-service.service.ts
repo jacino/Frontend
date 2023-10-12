@@ -19,7 +19,7 @@ export class KanbanService {
   }
 
   retrieveKanbanById(id: String): Observable<Kanban> {
-    return this.http.get<Kanban>(this.kanbanAppUrl + '/kanbans' + id);
+    return this.http.get<Kanban>(this.kanbanAppUrl + '/kanbans/' + id);
   }
 
   saveNewKanban(title: string): Observable<string> {
