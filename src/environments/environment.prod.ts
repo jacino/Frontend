@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  kanbanAppUrl: '/api'
+  kanbanAppUrl: 'http://51.178.157.74:32090'
 };
